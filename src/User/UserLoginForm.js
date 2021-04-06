@@ -15,13 +15,14 @@ function UserLoginForm() {
 
     const sendAuth = () => {
         axios
-            // .post('https://lambda-mud-adventure.herokuapp.com/api/login',userData)
-            .post('http://localhost:8000/api/login/',userData)
+            .post('https://lambda-mud-adventure.herokuapp.com/api/login',userData)
+            // .post('http://localhost:8000/api/login/',userData)
             .then(res => {
                 console.log('Login successful');
                 localStorage.setItem("token",res.data.key);
                 // setLoggedIn
                 push('/game');
+                window.location.reload();
             })
             .catch(err=>{
                 console.log('Login error: ', err);
